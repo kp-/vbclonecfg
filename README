@@ -1,0 +1,9 @@
+A little script to setup newly cloned VirtualBox images.
+
+CentOS 6
+
+* Configures the new initialized MAC address to be eth0
+* Asks and sets a new hostname
+* 
+
+-kp
