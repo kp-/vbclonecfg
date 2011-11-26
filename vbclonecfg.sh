@@ -25,6 +25,10 @@ echo $hwaddr_new
 line_one_num=$(grep -n "$hwaddr_old" /etc/udev/rules.d/70-persistent-net.rules | awk -F: '{print $1}')
 line_two_num=$(grep -n "$hwaddr_new" /etc/udev/rules.d/70-persistent-net.rules | awk -F: '{print $1}')
 
+if [ ! -d "tmp" ]; then
+   mkdir tmp
+fi
+
 # Use sed to create a temp 70-persistent-net.rules with the adjusted configuration.
 # First we make the replace the old eth0 interface with the new eth1 entry.
 # Next we comment out the old eth0 (comment = #) and uncomment the new eth0
@@ -36,7 +40,6 @@ cat /etc/udev/rules.d/70-persistent-net.rules | sed "s/eth1/eth0/" |
 # The MAC address we are using for the new eth0 was stored using lower case which
 # we will want to convert to upper case before we store it in our new ifcfg-eth0 
 # config.
-hwaddr_new=$line_two
 hwaddr_new_upper=$(echo $hwaddr_new |tr '[:lower:]' '[:upper:]')
 
 # Find the old MAC with a regular expression and replace it with our new upper case
