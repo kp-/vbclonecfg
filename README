@@ -1,9 +1,12 @@
 A little script to setup newly cloned VirtualBox images.
 
-CentOS 6
+After makeing a clone of my base CentOS 6 install I use this script to 
+help configure the newly cloned VM.
 
-* Configures the new initialized MAC address to be eth0
-* Asks and sets a new hostname
-* 
+As of now the script does the following:
+
+-- Configures the new initialized MAC address to be eth0
+-- Asks and sets a new hostname
+-- Sets the coorrect MAC address for ifcfg-eth0 
 
 -kp
